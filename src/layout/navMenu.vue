@@ -23,5 +23,4 @@ import { mainStore } from '../store'
 import { storeToRefs } from 'pinia';
 const store = mainStore()
 const { routes } = storeToRefs(store)
-console.log(routes)
 </script>

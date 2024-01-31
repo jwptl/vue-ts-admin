@@ -1,13 +1,12 @@
 import { defineStore } from "pinia";
-import { RouteRecordRaw } from 'vue-router'
 const views = import.meta.glob('../views/**/*.vue');
 export const mainStore = defineStore('mainStore', {
     state: () => ({
-        routes: [] as Array<RouteRecordRaw>
+        routes: [] as Array<any>
     }),
     actions: {
         addRoutes(data: Array<any>, router: any) {
-            data.forEach(m => {
+            data.forEach((m:any)=> {
                 this.routes.push({
                     path: m.path,
                     name: m.name,

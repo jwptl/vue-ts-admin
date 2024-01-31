@@ -37,7 +37,7 @@ const router = createRouter({
 
 
 //路由拦截
-router.beforeEach(async (to, form, next) => {
+router.beforeEach(async (to, _, next) => {
   if (to.path == '/login') {
     next()
   } else {
