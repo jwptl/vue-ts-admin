@@ -7,6 +7,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { viteMockServe } from "vite-plugin-mock";
  
 export default ({ command, mode }: ConfigEnv): UserConfig => {
+  
   return {
     plugins: [
       vue(),
@@ -22,5 +23,15 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         mockPath: "./src/mock/"
       })
     ],
+    server: {
+      host: '0.0.0.0',
+      proxy: {
+          '/api': {
+              target: loadEnv(mode, process.cwd()).VITE_PROXYURL,
+              changeOrigin: false,
+              rewrite: path => path.replace(/^\/api/, ''),
+          }
+      }
+  },
   }
 }
